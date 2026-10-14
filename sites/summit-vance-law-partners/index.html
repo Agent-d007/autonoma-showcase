@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Summit & Vance Law Partners</title>
+</head>
+<body class="bg-slate-900 text-slate-100 font-sans antialiased">
+  <nav class="border-b border-slate-800 bg-slate-900/90 backdrop-blur sticky top-0 z-20">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-xs bg-amber-500 text-slate-950 font-black flex items-center justify-center text-sm">SV</div>
+        <span class="font-semibold tracking-wider text-slate-100 text-sm">SUMMIT & VANCE <span class="text-slate-400 font-normal">PARTNERS</span></span>
+      </div>
+      <div class="flex items-center gap-6 text-xs tracking-wider uppercase">
+        <a href="#practices" class="text-slate-300 hover:text-white transition">Practices</a>
+        <a href="#consult" class="bg-amber-500 hover:bg-amber-400 text-slate-950 px-4 py-2 font-bold rounded-xs transition">Confidential Intake</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="max-w-6xl mx-auto px-6 py-20 lg:py-28">
+    <div class="max-w-2xl">
+      <span class="text-amber-400 text-xs font-bold uppercase tracking-widest block mb-4">Corporate & Intellectual Property Law</span>
+      <h1 class="text-4xl lg:text-6xl font-bold tracking-tight text-white mb-6 leading-tight">Decisive Legal Architecture for Industry Leaders.</h1>
+      <p class="text-slate-400 text-base leading-relaxed mb-8">We represent high-growth technology companies, venture funds, and founders across corporate formation, cross-border M&A, and aggressive patent enforcement.</p>
+      <div class="flex gap-4">
+        <a href="#consult" class="bg-white text-slate-950 font-bold px-6 py-3 text-sm hover:bg-slate-200 transition">Schedule Case Evaluation</a>
+        <a href="#practices" class="border border-slate-700 text-slate-300 font-medium px-6 py-3 text-sm hover:bg-slate-800 transition">Practice Capabilities</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="practices" class="border-t border-slate-800 bg-slate-950 py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-xs uppercase tracking-widest text-slate-400 font-bold mb-8">Core Disciplines</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="border-l-2 border-amber-500 pl-4">
+          <h3 class="font-bold text-white text-lg mb-2">Venture Financings & M&A</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">Seed to Series D term sheets, SAFE agreements, secondary liquidity sales, and strategic acquisitions.</p>
+        </div>
+        <div class="border-l-2 border-amber-500 pl-4">
+          <h3 class="font-bold text-white text-lg mb-2">Patent & Trade Secret Litigation</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">Global IP portfolio management, defensive patent pools, non-compete defense, and copyright licensing.</p>
+        </div>
+        <div class="border-l-2 border-amber-500 pl-4">
+          <h3 class="font-bold text-white text-lg mb-2">Regulatory & Compliance</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">AI algorithmic accountability, GDPR/CCPA data governance, and cross-border commercial trade sanction reviews.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="consult" class="max-w-4xl mx-auto px-6 py-16">
+    <div class="bg-slate-800/60 border border-slate-700 p-8 rounded-xl">
+      <h2 class="text-xl font-bold text-white mb-2">Confidential Partner Inquiry</h2>
+      <p class="text-xs text-slate-400 mb-6">Inquiries are protected under attorney-client privilege. Response guaranteed within 4 business hours.</p>
+      <form class="grid grid-cols-1 sm:grid-cols-2 gap-4" onsubmit="event.preventDefault(); alert('Inquiry securely encrypted and dispatched to managing partner.');">
+        <input type="text" placeholder="Representative Name" required class="bg-slate-900 border border-slate-700 rounded-sm px-4 py-2.5 text-xs text-white" />
+        <input type="email" placeholder="Corporate Email" required class="bg-slate-900 border border-slate-700 rounded-sm px-4 py-2.5 text-xs text-white" />
+        <input type="text" placeholder="Entity Name (e.g. Apex AI Inc.)" class="sm:col-span-2 bg-slate-900 border border-slate-700 rounded-sm px-4 py-2.5 text-xs text-white" />
+        <textarea rows="3" placeholder="Brief nature of counsel required..." class="sm:col-span-2 bg-slate-900 border border-slate-700 rounded-sm px-4 py-2.5 text-xs text-white"></textarea>
+        <button type="submit" class="sm:col-span-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-3 text-xs uppercase tracking-wider rounded-sm transition">Transmit Confidential Inquiry</button>
+      </form>
+    </div>
+  </section>
+</body>
+</html>
