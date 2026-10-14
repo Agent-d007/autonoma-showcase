@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kura Movement Studio • Boutique Pilates & Kinematic Studio</title>
+  <meta name="description" content="Need an elegant, minimalist booking website with reformer class schedules, pricing calculator, and high-impact Scandinavian studio visuals.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    h1, h2, h3, .font-syne { font-family: 'Syne', sans-serif; }
+  </style>
+</head>
+<body class="bg-[#fafafa] text-[#18181b] antialiased selection:bg-[#0d9488] selection:text-white">
+
+  <!-- Minimalist Header -->
+  <header class="sticky top-0 z-50 bg-[#fafafa]/90 backdrop-blur-md border-b border-zinc-200">
+    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span class="w-3 h-3 rounded-full bg-[#0d9488]"></span>
+        <span class="font-syne text-xl font-bold tracking-tight text-zinc-900">Kura Movement Studio</span>
+      </div>
+      <nav class="hidden md:flex items-center gap-8 text-xs font-semibold uppercase tracking-widest text-zinc-600">
+        <a href="#services" class="hover:text-zinc-950 transition">Services</a>
+        <a href="#calculator" class="hover:text-zinc-950 transition">Estimator</a>
+        <a href="#inquiry" class="border border-zinc-900 text-zinc-900 px-5 py-2.5 rounded-full hover:bg-zinc-900 hover:text-white transition">
+          Book Consultation
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Editorial Hero Section -->
+  <section class="pt-16 pb-24 px-6 max-w-6xl mx-auto relative overflow-hidden">
+    <canvas id="threejs-canvas" class="absolute inset-0 w-full h-full pointer-events-none opacity-20"></canvas>
+    
+    <div class="relative z-10 max-w-3xl">
+      <p class="text-xs uppercase tracking-widest text-[#0d9488] font-bold mb-4 font-mono">01 / Boutique Pilates & Kinematic Studio</p>
+      <h1 class="text-4xl sm:text-6xl font-extrabold text-zinc-900 tracking-tight leading-[1.08] mb-6">
+        Nordic Reformer Pilates Studio - Precision Kinematic Movement
+      </h1>
+      <p class="text-base text-zinc-600 leading-relaxed max-w-2xl mb-8">
+        Need an elegant, minimalist booking website with reformer class schedules, pricing calculator, and high-impact Scandinavian studio visuals.
+      </p>
+      <div class="flex flex-wrap gap-4 items-center">
+        <a href="#inquiry" class="bg-[#0d9488] text-white px-8 py-4 rounded-full font-bold text-xs uppercase tracking-wider shadow hover:opacity-90 transition">
+          Reserve Appointment
+        </a>
+        <a href="#calculator" class="text-xs font-bold uppercase tracking-wider text-zinc-900 hover:underline px-4 py-4">
+          Calculate Scope →
+        </a>
+      </div>
+    </div>
+
+    <!-- Banana 16:9 Hero Asset with Floating Badge -->
+    <div class="mt-14 relative rounded-3xl overflow-hidden shadow-xl border border-zinc-200">
+      <img src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%201200%20675%22%20width%3D%221200%22%20height%3D%22675%22%3E%0A%20%20%3Cdefs%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22bgGrad%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%22100%25%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%2318181b%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%2327272a%22%20%2F%3E%0A%20%20%20%20%3C%2FlinearGradient%3E%0A%20%20%20%20%3CradialGradient%20id%3D%22glowGrad%22%20cx%3D%2270%25%22%20cy%3D%2230%25%22%20r%3D%2260%25%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23fbbf24%22%20stop-opacity%3D%220.35%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23fbbf24%22%20stop-opacity%3D%220%22%20%2F%3E%0A%20%20%20%20%3C%2FradialGradient%3E%0A%20%20%20%20%3CradialGradient%20id%3D%22accentGlow%22%20cx%3D%2225%25%22%20cy%3D%2275%25%22%20r%3D%2250%25%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f59e0b%22%20stop-opacity%3D%220.25%22%20%2F%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23f59e0b%22%20stop-opacity%3D%220%22%20%2F%3E%0A%20%20%20%20%3C%2FradialGradient%3E%0A%20%20%20%20%3Cpattern%20id%3D%22grid%22%20width%3D%2240%22%20height%3D%2240%22%20patternUnits%3D%22userSpaceOnUse%22%3E%0A%20%20%20%20%20%20%3Cpath%20d%3D%22M%2040%200%20L%200%200%200%2040%22%20fill%3D%22none%22%20stroke%3D%22rgba(255%2C255%2C255%2C0.04)%22%20stroke-width%3D%221%22%20%2F%3E%0A%20%20%20%20%3C%2Fpattern%3E%0A%20%20%3C%2Fdefs%3E%0A%0A%20%20%3C!--%20Background%20Canvas%20--%3E%0A%20%20%3Crect%20width%3D%221200%22%20height%3D%22675%22%20fill%3D%22url(%23bgGrad)%22%20%2F%3E%0A%20%20%3Crect%20width%3D%221200%22%20height%3D%22675%22%20fill%3D%22url(%23grid)%22%20%2F%3E%0A%20%20%3Crect%20width%3D%221200%22%20height%3D%22675%22%20fill%3D%22url(%23glowGrad)%22%20%2F%3E%0A%20%20%3Crect%20width%3D%221200%22%20height%3D%22675%22%20fill%3D%22url(%23accentGlow)%22%20%2F%3E%0A%0A%20%20%3C!--%20Abstract%203D%20Geometric%20Accents%20--%3E%0A%20%20%3Cg%20transform%3D%22translate(864%2C%20303.75)%20scale(1)%22%3E%0A%20%20%20%20%3Ccircle%20r%3D%22140%22%20fill%3D%22none%22%20stroke%3D%22%23fbbf24%22%20stroke-width%3D%222%22%20stroke-dasharray%3D%226%2C8%22%20opacity%3D%220.6%22%20%2F%3E%0A%20%20%20%20%3Ccircle%20r%3D%2290%22%20fill%3D%22none%22%20stroke%3D%22%23f59e0b%22%20stroke-width%3D%223%22%20opacity%3D%220.8%22%20%2F%3E%0A%20%20%20%20%3Cpolygon%20points%3D%220%2C-70%2060%2C35%20-60%2C35%22%20fill%3D%22none%22%20stroke%3D%22%23fbbf24%22%20stroke-width%3D%222%22%20opacity%3D%220.7%22%20%2F%3E%0A%20%20%20%20%3Cpolygon%20points%3D%220%2C70%20-60%2C-35%2060%2C-35%22%20fill%3D%22none%22%20stroke%3D%22%23f59e0b%22%20stroke-width%3D%221.5%22%20opacity%3D%220.5%22%20%2F%3E%0A%20%20%20%20%3Ccircle%20r%3D%2212%22%20fill%3D%22%23f59e0b%22%20%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%2290%22%20cy%3D%220%22%20r%3D%226%22%20fill%3D%22%23facc15%22%20%2F%3E%0A%20%20%3C%2Fg%3E%0A%0A%20%20%3C!--%20Branded%20Badge%20--%3E%0A%20%20%3Cg%20transform%3D%22translate(96%2C%20121.5)%22%3E%0A%20%20%20%20%3Crect%20width%3D%22260%22%20height%3D%2236%22%20rx%3D%2218%22%20fill%3D%22rgba(255%2C255%2C255%2C0.08)%22%20stroke%3D%22%23f59e0b%22%20stroke-width%3D%221%22%20%2F%3E%0A%20%20%20%20%3Ccircle%20cx%3D%2220%22%20cy%3D%2218%22%20r%3D%226%22%20fill%3D%22%23facc15%22%20%2F%3E%0A%20%20%20%20%3Ctext%20x%3D%2236%22%20y%3D%2223%22%20fill%3D%22%23fafafa%22%20font-family%3D%22system-ui%2C%20-apple-system%2C%20sans-serif%22%20font-size%3D%2212%22%20font-weight%3D%22700%22%20letter-spacing%3D%221%22%3E%0A%20%20%20%20%20%20BANANA%20AI%20GRAPHICS%20BOT%0A%20%20%20%20%3C%2Ftext%3E%0A%20%20%3C%2Fg%3E%0A%0A%20%20%3C!--%20Title%20%26%20Category%20--%3E%0A%20%20%3Cg%20transform%3D%22translate(96%2C%20283.5)%22%3E%0A%20%20%20%20%3Ctext%20x%3D%220%22%20y%3D%220%22%20fill%3D%22%23f59e0b%22%20font-family%3D%22system-ui%2C%20sans-serif%22%20font-size%3D%2224%22%20font-weight%3D%22600%22%20text-transform%3D%22uppercase%22%20letter-spacing%3D%222%22%3E%0A%20%20%20%20%20%20Boutique%20Pilates%20%20Kinematic%20Studio%0A%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%220%22%20y%3D%2254%22%20fill%3D%22%23fafafa%22%20font-family%3D%22system-ui%2C%20sans-serif%22%20font-size%3D%2246%22%20font-weight%3D%22900%22%20letter-spacing%3D%22-0.5%22%3E%0A%20%20%20%20%20%20Nordic%20Reformer%20Pilates%20Studio%20-%20Precision%20Kinemat%0A%20%20%20%20%3C%2Ftext%3E%0A%20%20%20%20%3Ctext%20x%3D%220%22%20y%3D%2290%22%20fill%3D%22rgba(255%2C255%2C255%2C0.6)%22%20font-family%3D%22system-ui%2C%20sans-serif%22%20font-size%3D%2219%22%20font-weight%3D%22400%22%3E%0A%20%20%20%20%20%20Engineered%20with%20Banana%20Model%20%E2%80%A2%20100%25%20Commercial%20Vector%20Matrix%0A%20%20%20%20%3C%2Ftext%3E%0A%20%20%3C%2Fg%3E%0A%0A%20%20%3C!--%20Footer%20Watermark%20%26%20Aspect%20Ratio%20--%3E%0A%20%20%3Cg%20transform%3D%22translate(96%2C%20594)%22%3E%0A%20%20%20%20%3Ctext%20x%3D%220%22%20y%3D%220%22%20fill%3D%22rgba(255%2C255%2C255%2C0.4)%22%20font-family%3D%22system-ui%2C%20monospace%22%20font-size%3D%2213%22%3E%0A%20%20%20%20%20%20RATIO%3A%2016%3A9%20%7C%20RES%3A%201200x675%20%7C%20AUTONOMA%20GRAPHICS%20LAB%0A%20%20%20%20%3C%2Ftext%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E" alt="Kura Movement Studio Hero Visual" class="w-full aspect-video object-cover" />
+      <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-md px-4 py-2 rounded-xl text-xs font-semibold text-zinc-800 border border-zinc-200/80 shadow-sm flex items-center gap-2">
+        <span>🍌</span> Synthesized by Banana Visual Bot (Boutique Pilates & Kinematic Studio)
+      </div>
+    </div>
+  </section>
+
+  <!-- Editorial Grid Services -->
+  <section id="services" class="py-20 bg-white border-y border-zinc-200 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-[#0d9488] font-bold font-mono">02 / Methodology</span>
+          <h2 class="text-3xl font-extrabold text-zinc-900 mt-2">Specialized Engagements</h2>
+        </div>
+        <p class="text-xs text-zinc-500 max-w-sm">Tailored precisely for Health-conscious professionals, runners, and postpartum rehab clients seeking uncompromising excellence.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        
+          <div class="border-t border-zinc-300 pt-6">
+            <span class="text-xs font-mono text-zinc-400 block mb-3">01</span>
+            <h3 class="text-lg font-bold text-zinc-900 mb-2">Dynamic Reformer Conditioning</h3>
+            <p class="text-xs text-zinc-600 leading-relaxed">Comprehensive diagnostic kinematic workflow executed with high-grade European standards.</p>
+          </div>
+        
+          <div class="border-t border-zinc-300 pt-6">
+            <span class="text-xs font-mono text-zinc-400 block mb-3">02</span>
+            <h3 class="text-lg font-bold text-zinc-900 mb-2">Private 1-on-1 Kinematic Assessment</h3>
+            <p class="text-xs text-zinc-600 leading-relaxed">Comprehensive diagnostic kinematic workflow executed with high-grade European standards.</p>
+          </div>
+        
+          <div class="border-t border-zinc-300 pt-6">
+            <span class="text-xs font-mono text-zinc-400 block mb-3">03</span>
+            <h3 class="text-lg font-bold text-zinc-900 mb-2">Prenatal & Postpartum Core Restoration</h3>
+            <p class="text-xs text-zinc-600 leading-relaxed">Comprehensive diagnostic kinematic workflow executed with high-grade European standards.</p>
+          </div>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Estimator -->
+  <section id="calculator" class="py-20 px-6 max-w-4xl mx-auto">
+    <div class="text-center mb-12">
+      <span class="text-xs uppercase tracking-widest text-[#0d9488] font-bold font-mono">03 / Pricing</span>
+      <h2 class="text-3xl font-extrabold text-zinc-900 mt-2">Custom Scope Estimator</h2>
+    </div>
+
+    <div class="bg-white border border-zinc-200 rounded-3xl p-8 shadow-sm">
+      <div class="grid sm:grid-cols-2 gap-6 mb-8">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-2">Program Format</label>
+          <select id="calc-format" onchange="calcEditorial()" class="w-full bg-zinc-50 border border-zinc-300 rounded-xl p-3 text-xs font-semibold text-zinc-900">
+            <option value="550">Introductory Tier ($550)</option>
+            <option value="850" selected>Comprehensive Studio Track ($850)</option>
+            <option value="1500">Master Bespoke Residency ($1,500)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-2">Frequency Schedule</label>
+          <select id="calc-freq" onchange="calcEditorial()" class="w-full bg-zinc-50 border border-zinc-300 rounded-xl p-3 text-xs font-semibold text-zinc-900">
+            <option value="1">Bi-Weekly Session</option>
+            <option value="1.5">Intensive Weekly Track (x1.5)</option>
+          </select>
+        </div>
+      </div>
+      <div class="bg-zinc-50 border border-zinc-200 rounded-2xl p-5 flex items-center justify-between">
+        <span class="text-xs font-bold uppercase tracking-wider text-zinc-600">Calculated Investment</span>
+        <span id="calc-result" class="text-xl font-bold font-mono text-[#0d9488]">$850 USD</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inquiry Intake Form -->
+  <section id="inquiry" class="py-20 bg-zinc-900 text-white px-6">
+    <div class="max-w-xl mx-auto text-center">
+      <h2 class="text-3xl font-extrabold mb-3">Begin Your Consultation</h2>
+      <p class="text-xs text-zinc-400 mb-8">Direct client intake for Kura Movement Studio. Response guaranteed within 3 business hours.</p>
+      
+      <form onsubmit="event.preventDefault(); document.getElementById('inquiry-msg').classList.remove('hidden');" class="space-y-4 text-left">
+        <div>
+          <label class="block text-[11px] font-mono uppercase text-zinc-400 mb-1">Full Name</label>
+          <input type="text" required placeholder="Dr. Astrid Vance" class="w-full bg-zinc-800 border border-zinc-700 rounded-xl p-3 text-xs text-white" />
+        </div>
+        <div>
+          <label class="block text-[11px] font-mono uppercase text-zinc-400 mb-1">Email</label>
+          <input type="email" required placeholder="astrid@domain.com" class="w-full bg-zinc-800 border border-zinc-700 rounded-xl p-3 text-xs text-white" />
+        </div>
+        <button type="submit" class="w-full bg-[#0d9488] text-white font-bold py-4 rounded-xl text-xs uppercase tracking-wider hover:opacity-90 transition">
+          Submit Private Inquiry
+        </button>
+      </form>
+      <div id="inquiry-msg" class="hidden mt-4 p-3 rounded-xl bg-emerald-900/50 border border-emerald-500/50 text-emerald-300 text-xs">
+        ✓ Consultation inquiry dispatched to Kura Movement Studio directors.
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function calcEditorial() {
+      const f = parseFloat(document.getElementById('calc-format').value);
+      const q = parseFloat(document.getElementById('calc-freq').value);
+      document.getElementById('calc-result').innerText = '$' + Math.round(f * q) + ' USD';
+    }
+
+    try {
+      const canvas = document.getElementById('threejs-canvas');
+      if (canvas && window.THREE) {
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+        renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+
+        const geo = new THREE.TorusGeometry(3, 0.4, 16, 50);
+        const mat = new THREE.MeshBasicMaterial({ color: '#0d9488', wireframe: true });
+        const mesh = new THREE.Mesh(geo, mat);
+        scene.add(mesh);
+        camera.position.z = 6;
+
+        function loop() {
+          requestAnimationFrame(loop);
+          mesh.rotation.x += 0.003;
+          mesh.rotation.y += 0.005;
+          renderer.render(scene, camera);
+        }
+        loop();
+      }
+    } catch(e) {}
+  </script>
+</body>
+</html>
