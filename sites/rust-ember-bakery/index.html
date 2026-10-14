@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Rust & Ember - Artisan Bakery</title>
+</head>
+<body class="font-serif bg-[#fdfbf7] text-stone-800 antialiased">
+  <nav class="border-b border-stone-200/80 bg-[#fdfbf7]/90 backdrop-blur sticky top-0 z-20">
+    <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="font-bold text-xl tracking-wider text-amber-950 font-serif">RUST & EMBER <span class="text-xs font-sans uppercase text-amber-700 tracking-widest block font-medium">Bakehouse</span></div>
+      <div class="flex items-center gap-6 text-sm font-sans font-medium text-stone-600">
+        <a href="#menu" class="hover:text-amber-800 transition">Morning Menu</a>
+        <a href="#hours" class="hover:text-amber-800 transition">Oven Times</a>
+        <button class="bg-amber-800 hover:bg-amber-900 text-amber-50 px-4 py-2 rounded-full text-xs font-semibold tracking-wider uppercase transition">Reserve Loaf</button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="max-w-5xl mx-auto px-4 py-16 lg:py-24 text-center">
+    <span class="inline-block text-xs font-sans uppercase tracking-widest text-amber-800 bg-amber-100/60 px-3 py-1 rounded-full mb-4">36-Hour Natural Fermentation</span>
+    <h1 class="text-4xl lg:text-6xl font-normal text-stone-900 mb-6 leading-tight">Handcrafted Sourdough & Warm French Viennoiserie</h1>
+    <p class="font-sans text-stone-600 max-w-xl mx-auto text-base leading-relaxed mb-8">Every loaf is shaped by hand using heirloom California organic wheat, unhurried time, and stone-deck wood ovens.</p>
+    <div class="flex justify-center gap-4 font-sans text-sm">
+      <a href="#menu" class="bg-amber-900 text-stone-100 px-6 py-3 rounded-full font-medium hover:bg-amber-950 transition">View Daily Bakes</a>
+      <a href="#hours" class="border border-stone-300 px-6 py-3 rounded-full font-medium text-stone-700 hover:bg-stone-100 transition">Bakery Hours & Map</a>
+    </div>
+  </header>
+
+  <section id="menu" class="max-w-5xl mx-auto px-4 py-12">
+    <h2 class="text-2xl text-center mb-8 font-serif text-stone-900">Today's Fresh Batch</h2>
+    <div class="grid md:grid-cols-3 gap-6 font-sans">
+      <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-xs">
+        <div class="h-44 rounded-xl bg-stone-100 mb-4 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=500&q=80" alt="Country Loaf" class="w-full h-full object-cover" />
+        </div>
+        <div class="flex justify-between items-baseline mb-2">
+          <h3 class="font-bold text-stone-900">Classic Country Boule</h3>
+          <span class="text-amber-800 font-bold">$10.50</span>
+        </div>
+        <p class="text-xs text-stone-500 mb-4">Milled whole-wheat, deep caramelized blistered crust, creamy custardy crumb.</p>
+        <button class="w-full bg-stone-100 hover:bg-amber-100 text-stone-800 hover:text-amber-900 text-xs font-semibold py-2 rounded-lg transition" onclick="alert('Added Classic Country Boule to pickup basket!')">Add to Pickup</button>
+      </div>
+      <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-xs">
+        <div class="h-44 rounded-xl bg-stone-100 mb-4 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=500&q=80" alt="Croissant" class="w-full h-full object-cover" />
+        </div>
+        <div class="flex justify-between items-baseline mb-2">
+          <h3 class="font-bold text-stone-900">Almond Frangipane</h3>
+          <span class="text-amber-800 font-bold">$6.25</span>
+        </div>
+        <p class="text-xs text-stone-500 mb-4">Twice-baked butter croissant filled with velvet almond cream and roasted sliced almonds.</p>
+        <button class="w-full bg-stone-100 hover:bg-amber-100 text-stone-800 hover:text-amber-900 text-xs font-semibold py-2 rounded-lg transition" onclick="alert('Added Almond Frangipane to pickup basket!')">Add to Pickup</button>
+      </div>
+      <div class="bg-white p-5 rounded-2xl border border-stone-200 shadow-xs">
+        <div class="h-44 rounded-xl bg-stone-100 mb-4 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=500&q=80" alt="Olive Focaccia" class="w-full h-full object-cover" />
+        </div>
+        <div class="flex justify-between items-baseline mb-2">
+          <h3 class="font-bold text-stone-900">Castelvetrano Focaccia</h3>
+          <span class="text-amber-800 font-bold">$7.00</span>
+        </div>
+        <p class="text-xs text-stone-500 mb-4">Sicilian extra virgin olive oil, fresh rosemary needles, and flake sea salt.</p>
+        <button class="w-full bg-stone-100 hover:bg-amber-100 text-stone-800 hover:text-amber-900 text-xs font-semibold py-2 rounded-lg transition" onclick="alert('Added Castelvetrano Focaccia to pickup basket!')">Add to Pickup</button>
+      </div>
+    </div>
+  </section>
+
+  <footer id="hours" class="border-t border-stone-200 py-8 text-center text-xs font-sans text-stone-500">
+    <p class="font-bold text-stone-800 text-sm mb-1">Rust & Ember Bakehouse</p>
+    <p>124 Market Street • Tuesday - Sunday, 7:00 AM – 3:00 PM (or until sold out)</p>
+  </footer>
+</body>
+</html>
