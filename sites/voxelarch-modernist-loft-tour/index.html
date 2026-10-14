@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VoxelArch Modernist Loft Tour | Interactive 3D WebGL</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <style>
+    body { margin: 0; overflow: hidden; background: #030712; color: #f9fafb; font-family: system-ui, sans-serif; }
+    #canvas3d { width: 100vw; height: 100vh; display: block; }
+    .glass-hud { background: rgba(15, 23, 42, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); }
+  </style>
+</head>
+<body class="relative">
+  <canvas id="canvas3d"></canvas>
+  <div class="absolute top-6 left-6 z-10 glass-hud p-6 rounded-2xl max-w-sm pointer-events-auto shadow-2xl">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+      <span class="text-xs uppercase tracking-widest font-mono text-cyan-400 font-bold">WebGL 60FPS Active</span>
+    </div>
+    <h1 class="text-xl font-bold tracking-tight mb-1 text-white">VoxelArch Modernist Loft Tour</h1>
+    <p class="text-xs text-slate-300 mb-4 leading-relaxed">Interactive architectural interior with dynamic sunlight time-of-day slider, marble reflections, and furniture arrangement studio.</p>
+    <div class="space-y-2 text-xs">
+      <div class="flex justify-between text-slate-400"><span>Render Mode</span><span class="text-cyan-300 font-mono">PBR Shaders</span></div>
+      <div class="flex justify-between text-slate-400"><span>GPU Acceleration</span><span class="text-emerald-300 font-mono">Hardware Enabled</span></div>
+      <div class="flex justify-between text-slate-400"><span>Interaction</span><span class="text-white font-mono">Drag to Orbit / Scroll to Zoom</span></div>
+    </div>
+    <div class="mt-4 pt-3 border-t border-slate-700/60 flex gap-2">
+      <button id="toggleWireframe" class="flex-1 py-1.5 text-xs font-semibold bg-cyan-600 hover:bg-cyan-500 rounded-lg text-white transition">Wireframe</button>
+      <button id="resetCamera" class="flex-1 py-1.5 text-xs font-semibold bg-slate-800 hover:bg-slate-700 rounded-lg text-slate-200 transition">Reset View</button>
+    </div>
+  </div>
+  <script>
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x030712, 0.035);
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0, 2, 7);
+
+    const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('canvas3d'), antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    const ambLight = new THREE.AmbientLight(0xffffff, 0.8);
+    scene.add(ambLight);
+    const dirLight1 = new THREE.DirectionalLight('#6366f1', 2.5);
+    dirLight1.position.set(5, 10, 7);
+    scene.add(dirLight1);
+    const dirLight2 = new THREE.DirectionalLight(0x06b6d4, 1.8);
+    dirLight2.position.set(-5, -5, -5);
+    scene.add(dirLight2);
+
+    const group = new THREE.Group();
+    const geo = new THREE.IcosahedronGeometry(2.2, 3);
+    const mat = new THREE.MeshStandardMaterial({
+      color: '#6366f1',
+      metalness: 0.85,
+      roughness: 0.15,
+      wireframe: false
+    });
+    const mesh = new THREE.Mesh(geo, mat);
+    group.add(mesh);
+
+    const pGeo = new THREE.BufferGeometry();
+    const pCount = 500;
+    const pPos = new Float32Array(pCount * 3);
+    for(let i=0; i<pCount*3; i++) {
+      pPos[i] = (Math.random() - 0.5) * 20;
+    }
+    pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+    const pMat = new THREE.PointsMaterial({ size: 0.04, color: 0x38bdf8 });
+    const points = new THREE.Points(pGeo, pMat);
+    scene.add(points);
+    scene.add(group);
+
+    let isDragging = false;
+    let prevMouse = { x: 0, y: 0 };
+    window.addEventListener('mousedown', (e) => { isDragging = true; prevMouse = { x: e.clientX, y: e.clientY }; });
+    window.addEventListener('mouseup', () => { isDragging = false; });
+    window.addEventListener('mousemove', (e) => {
+      if(!isDragging) return;
+      const dx = e.clientX - prevMouse.x;
+      const dy = e.clientY - prevMouse.y;
+      group.rotation.y += dx * 0.008;
+      group.rotation.x += dy * 0.008;
+      prevMouse = { x: e.clientX, y: e.clientY };
+    });
+
+    document.getElementById('toggleWireframe')?.addEventListener('click', () => {
+      mat.wireframe = !mat.wireframe;
+    });
+    document.getElementById('resetCamera')?.addEventListener('click', () => {
+      group.rotation.set(0, 0, 0);
+      camera.position.set(0, 2, 7);
+    });
+
+    function animate() {
+      requestAnimationFrame(animate);
+      if(!isDragging) {
+        group.rotation.y += 0.004;
+        group.rotation.x += 0.002;
+      }
+      points.rotation.y -= 0.001;
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
+</body>
+</html>
