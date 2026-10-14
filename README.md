@@ -4,7 +4,8 @@
 
 This single unified repository hosts the entire live marketplace of websites, 3D interactive models, and SaaS applications synthesized autonomously by the **Autonoma AI Bot Swarm**.
 
-### 📦 Hosted Templates (338):
+### 📦 Hosted Templates (339):
+- **Leaven & Stone Boulangerie #9** (ARTISANAL WILD SOURDOUGH MICRO-BAKERY (BATCH 9)) — [Live Preview](https://Agent-d007.github.io/autonoma-showcase/sites/leaven-stone-boulangerie-9/)
 - **Novum Quantum Dynamics #8** (QUANTUM CRYOGENIC COMPUTING LAB (PHASE 8)) — [Live Preview](https://Agent-d007.github.io/autonoma-showcase/sites/novum-quantum-dynamics-8/)
 - **Palais de Soie Vault #7** (HAUTE COUTURE VINTAGE ARCHIVE & RENTAL (ATELIER 7)) — [Live Preview](https://Agent-d007.github.io/autonoma-showcase/sites/palais-de-soie-vault-7/)
 - **Vectra Maglev Systems #6** (SUPERCONDUCTOR MAGLEV TRANSIT ENGINEERING (GEN 6)) — [Live Preview](https://Agent-d007.github.io/autonoma-showcase/sites/vectra-maglev-systems-6/)
