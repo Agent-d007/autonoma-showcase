@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zenith Kinetic Architecture - Parametric 3D Pavilion</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <style>
+    .active-tab-nav {
+      background-color: #10b981 !important;
+      color: #ffffff !important;
+    }
+  </style>
+</head>
+<body class="bg-stone-950 text-stone-100 font-sans antialiased min-h-screen flex flex-col selection:bg-emerald-500 selection:text-white">
+
+  <!-- Header Navigation -->
+  <header class="sticky top-0 z-30 bg-stone-950/90 backdrop-blur border-b border-stone-800">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-sm bg-emerald-600 text-stone-950 flex items-center justify-center font-bold text-sm">Z</div>
+        <span class="font-semibold tracking-wider text-sm">ZENITH <span class="text-stone-400 font-normal">KINETIC ATELIER</span></span>
+      </div>
+
+      <!-- Working Navigation Tabs -->
+      <nav class="hidden md:flex items-center gap-1 bg-stone-900 p-1 rounded-lg border border-stone-800 text-xs">
+        <button id="nav-arch-3d" onclick="switchArchTab('3d')" class="active-tab-nav px-3 py-1.5 rounded text-stone-200 transition">3D Model</button>
+        <button id="nav-arch-portfolio" onclick="switchArchTab('portfolio')" class="px-3 py-1.5 rounded text-stone-400 hover:text-white transition">Portfolio</button>
+        <button id="nav-arch-specs" onclick="switchArchTab('specs')" class="px-3 py-1.5 rounded text-stone-400 hover:text-white transition">Materials</button>
+        <button id="nav-arch-consult" onclick="switchArchTab('consult')" class="px-3 py-1.5 rounded text-stone-400 hover:text-white transition">Commission</button>
+      </nav>
+
+      <button onclick="switchArchTab('consult')" class="bg-stone-100 text-stone-950 hover:bg-white text-xs font-bold px-4 py-2 rounded transition">
+        Inquire
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Multi-Tab Viewports -->
+  <main class="flex-1 max-w-7xl mx-auto w-full px-6 py-8">
+
+    <!-- TAB 1: 3D MODEL VIEWPORT -->
+    <div id="arch-tab-3d" class="space-y-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <span class="text-emerald-400 text-xs font-mono uppercase tracking-widest block mb-2">Parametric Pavilion 07</span>
+          <h1 class="text-3xl sm:text-5xl font-light text-white tracking-tight">Kinetic Tension Pavilion</h1>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="setArchMaterial('emerald')" class="px-3 py-1 rounded bg-stone-900 border border-stone-800 text-xs text-emerald-400 hover:bg-stone-800">Bio-Emerald</button>
+          <button onclick="setArchMaterial('titanium')" class="px-3 py-1 rounded bg-stone-900 border border-stone-800 text-xs text-stone-300 hover:bg-stone-800">Titanium</button>
+          <button onclick="setArchMaterial('gold')" class="px-3 py-1 rounded bg-stone-900 border border-stone-800 text-xs text-amber-400 hover:bg-stone-800">Bronze Wire</button>
+        </div>
+      </div>
+
+      <!-- 3D Canvas Viewport -->
+      <div class="relative bg-stone-900 rounded-xl border border-stone-800 overflow-hidden shadow-2xl">
+        <div id="arch-three-box" class="w-full h-[450px] bg-stone-950 cursor-grab active:cursor-grabbing"></div>
+        <div class="absolute bottom-3 left-4 text-[11px] text-stone-400 font-mono">
+          <span>Three.js Parametric Icosahedron • Drag to Rotate 360°</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: PORTFOLIO -->
+    <div id="arch-tab-portfolio" class="hidden space-y-6">
+      <h2 class="text-2xl font-light text-white">Selected Architectural Commissions</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-stone-900 p-5 rounded-xl border border-stone-800 space-y-3">
+          <div class="h-40 rounded bg-stone-800 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=500&q=80" alt="Pavilion" class="w-full h-full object-cover" />
+          </div>
+          <h3 class="font-bold text-white text-base">Alps Solarium Residence</h3>
+          <p class="text-xs text-stone-400">Thermally dynamic glass facade adapting to solar azimuth angles.</p>
+        </div>
+        <div class="bg-stone-900 p-5 rounded-xl border border-stone-800 space-y-3">
+          <div class="h-40 rounded bg-stone-800 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=500&q=80" alt="Sculpture" class="w-full h-full object-cover" />
+          </div>
+          <h3 class="font-bold text-white text-base">Oslo Maritime Pavilion</h3>
+          <p class="text-xs text-stone-400">Carbon-negative glulam timber framework cantilevered over the fjord.</p>
+        </div>
+        <div class="bg-stone-900 p-5 rounded-xl border border-stone-800 space-y-3">
+          <div class="h-40 rounded bg-stone-800 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=500&q=80" alt="Tower" class="w-full h-full object-cover" />
+          </div>
+          <h3 class="font-bold text-white text-base">Kyoto Ceramic Atrium</h3>
+          <p class="text-xs text-stone-400">Acoustically tuned terracotta lattices dampening transit vibration.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: MATERIALS & SPECS -->
+    <div id="arch-tab-specs" class="hidden space-y-6">
+      <h2 class="text-2xl font-light text-white">Ecological & Material Metrics</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="p-6 bg-stone-900 rounded-xl border border-stone-800">
+          <span class="text-2xl font-bold text-emerald-400 block mb-1">-42%</span>
+          <p class="text-xs text-stone-400">Embodied carbon vs conventional steel reinforcement</p>
+        </div>
+        <div class="p-6 bg-stone-900 rounded-xl border border-stone-800">
+          <span class="text-2xl font-bold text-emerald-400 block mb-1">0.78 W/m²K</span>
+          <p class="text-xs text-stone-400">Thermal insulation coefficient of kinetic envelopes</p>
+        </div>
+        <div class="p-6 bg-stone-900 rounded-xl border border-stone-800">
+          <span class="text-2xl font-bold text-emerald-400 block mb-1">100 Yrs</span>
+          <p class="text-xs text-stone-400">Engineered structural lifespan with modular deconstruction</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 4: COMMISSION INQUIRY -->
+    <div id="arch-tab-consult" class="hidden max-w-xl mx-auto space-y-6">
+      <div class="text-center space-y-2">
+        <h2 class="text-2xl font-light text-white">Commission an Architectural Study</h2>
+        <p class="text-xs text-stone-400">We accept 4 international structural commissions annually.</p>
+      </div>
+      <form onsubmit="event.preventDefault(); alert('Consultation request registered with our Zurich partners.');" class="bg-stone-900 p-6 rounded-xl border border-stone-800 space-y-4 text-xs">
+        <input type="text" placeholder="Principal Investor / Client Name" required class="w-full p-3 bg-stone-950 border border-stone-800 rounded text-white" />
+        <input type="email" placeholder="Contact Email" required class="w-full p-3 bg-stone-950 border border-stone-800 rounded text-white" />
+        <input type="text" placeholder="Project Location (City, Country)" required class="w-full p-3 bg-stone-950 border border-stone-800 rounded text-white" />
+        <textarea rows="3" placeholder="Anticipated square meters and site conditions..." class="w-full p-3 bg-stone-950 border border-stone-800 rounded text-white"></textarea>
+        <button type="submit" class="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-stone-950 font-bold rounded uppercase tracking-wider">Register Inquiry</button>
+      </form>
+    </div>
+
+  </main>
+
+  <script>
+    function switchArchTab(tab) {
+      ['3d', 'portfolio', 'specs', 'consult'].forEach(t => {
+        const el = document.getElementById('arch-tab-' + t);
+        if (el) el.classList.add('hidden');
+        const nav = document.getElementById('nav-arch-' + t);
+        if (nav) nav.classList.remove('active-tab-nav');
+      });
+      const activeEl = document.getElementById('arch-tab-' + tab);
+      if (activeEl) activeEl.classList.remove('hidden');
+      const activeNav = document.getElementById('nav-arch-' + tab);
+      if (activeNav) activeNav.classList.add('active-tab-nav');
+    }
+
+    let archScene, archCamera, archRenderer, archMesh;
+    function initArchThree() {
+      const box = document.getElementById('arch-three-box');
+      if (!box || typeof THREE === 'undefined') return;
+
+      const w = box.clientWidth || 800;
+      const h = box.clientHeight || 450;
+
+      archScene = new THREE.Scene();
+      archCamera = new THREE.PerspectiveCamera(45, w / h, 0.1, 100);
+      archCamera.position.z = 4.5;
+
+      archRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      archRenderer.setSize(w, h);
+      box.appendChild(archRenderer.domElement);
+
+      const geo = new THREE.IcosahedronGeometry(1.6, 2);
+      const mat = new THREE.MeshStandardMaterial({
+        color: 0x10b981,
+        wireframe: true,
+        roughness: 0.1,
+        metalness: 0.9
+      });
+      archMesh = new THREE.Mesh(geo, mat);
+      archScene.add(archMesh);
+
+      const light = new THREE.DirectionalLight(0xffffff, 1.5);
+      light.position.set(5, 5, 5);
+      archScene.add(light);
+      archScene.add(new THREE.AmbientLight(0xffffff, 0.4));
+
+      let isDragging = false, prev = { x: 0, y: 0 };
+      box.addEventListener('mousedown', e => { isDragging = true; prev = { x: e.clientX, y: e.clientY }; });
+      window.addEventListener('mouseup', () => { isDragging = false; });
+      box.addEventListener('mousemove', e => {
+        if (isDragging && archMesh) {
+          archMesh.rotation.y += (e.clientX - prev.x) * 0.01;
+          archMesh.rotation.x += (e.clientY - prev.y) * 0.01;
+          prev = { x: e.clientX, y: e.clientY };
+        }
+      });
+
+      function loop() {
+        requestAnimationFrame(loop);
+        if (archMesh) {
+          archMesh.rotation.y += 0.005;
+        }
+        archRenderer.render(archScene, archCamera);
+      }
+      loop();
+    }
+
+    function setArchMaterial(colorType) {
+      if (!archMesh) return;
+      if (colorType === 'emerald') archMesh.material.color.setHex(0x10b981);
+      if (colorType === 'titanium') archMesh.material.color.setHex(0xd6d3d1);
+      if (colorType === 'gold') archMesh.material.color.setHex(0xf59e0b);
+    }
+
+    setTimeout(initArchThree, 200);
+  </script>
+</body>
+</html>
